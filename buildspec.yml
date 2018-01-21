@@ -27,7 +27,7 @@ artifacts:
   files:
     - bundle.js
     #- index.html
-    #- package.json
+    - package.json
     #- node_modules/async/*
     #- node_modules/lodash/*
 
