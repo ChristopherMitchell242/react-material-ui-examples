@@ -1,22 +1,33 @@
-version: 0.0
-os: linux
-files:
-  - source:
-    destination: /var/www/html/WordPress
-hooks:
-  BeforeInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: scripts/change_permissions.sh
-      timeout: 300
-      runas: root
-  ApplicationStart:
-    - location: scripts/start_server.sh
-      timeout: 300
-      runas: root
-  ApplicationStop:
-    - location: scripts/stop_server.sh
-      timeout: 300
-      runas: root
+# Do not change version. This is the version of aws buildspec, not the version of your buldspec file.
+version: 0.2
+
+phases:
+  install:
+    commands:
+      #- echo Installing Mocha...
+      #- npm install -g mocha
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+      #- npm install unit.js
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling the Node.js code
+      - npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+# Include only the files required for your application to run.
+# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
+# used only for building and testing.
+# ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
+artifacts:
+  files:
+    - bundle.js
+    #- index.html
+    #- package.json
+    #- node_modules/async/*
+    #- node_modules/lodash/*
+
