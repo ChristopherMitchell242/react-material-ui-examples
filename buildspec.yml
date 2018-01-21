@@ -26,7 +26,7 @@ phases:
 artifacts:
   files:
     - bundle.js
-    #- index.html
+    - index.html
     - package.json
     #- node_modules/async/*
     #- node_modules/lodash/*
