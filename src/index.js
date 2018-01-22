@@ -58,7 +58,7 @@ class App extends Component {
 		return (
 			<BrowserRouter>
 				<div>
-					<AppBar title="Material Design Showcase" iconElementRight={ buttonFactory('save', () => this.login.bind(this)) } onLeftIconButtonTouchTap={this.toggleBurgerBar} onTitleTouchTap={ this.handleTouchTap }  />
+					<AppBar title="Material Design on AWS" iconElementRight={ buttonFactory('save', () => this.login.bind(this)) } onLeftIconButtonTouchTap={this.toggleBurgerBar} onTitleTouchTap={ this.handleTouchTap }  />
 
 					<div>
 						<Tabs>
